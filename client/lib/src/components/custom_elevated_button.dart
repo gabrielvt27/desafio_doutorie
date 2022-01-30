@@ -5,11 +5,11 @@ import 'package:client/src/constants.dart';
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
     Key? key,
-    required this.text,
+    required this.child,
     this.onPressed,
   }) : super(key: key);
 
-  final String text;
+  final Widget? child;
   final Function()? onPressed;
 
   @override
@@ -25,7 +25,7 @@ class CustomElevatedButton extends StatelessWidget {
             fontSize: 24,
           ),
         ),
-        child: Text(text),
+        child: child,
       ),
     );
   }

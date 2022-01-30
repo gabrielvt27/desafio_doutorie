@@ -102,7 +102,16 @@ class ProductPage extends StatelessWidget {
           Container(
             alignment: Alignment.center,
             child: CustomElevatedButton(
-              text: "Enviar",
+              child: state.formStatus is FormSubmitting
+                  ? const SizedBox(
+                      height: kDefaultPadding,
+                      width: kDefaultPadding,
+                      child: CircularProgressIndicator(
+                        color: kBackgroundColor,
+                        strokeWidth: 3,
+                      ),
+                    )
+                  : const Text("Enviar"),
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   FocusManager.instance.primaryFocus?.unfocus();

@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, '/product');
               },
-              text: "Cadastrar Produto",
+              child: const Text("Cadastrar Produto"),
             ),
           ],
         ),

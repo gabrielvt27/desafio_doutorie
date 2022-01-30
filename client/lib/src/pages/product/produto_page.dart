@@ -2,6 +2,7 @@ import 'package:client/src/components/custom_elevated_button.dart';
 import 'package:client/src/components/custom_textformfiel.dart';
 import 'package:client/src/pages/product/bloc/form_status.dart';
 import 'package:client/src/pages/product/bloc/product_bloc.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 
 import 'package:client/src/constants.dart';
@@ -84,9 +85,13 @@ class ProductPage extends StatelessWidget {
             keyboardType: TextInputType.number,
             onChanged: (val) {
               bloc.add(
-                ProductUpdateEvent(valor: double.tryParse(val)),
+                ProductUpdateEvent(
+                    valor: double.tryParse(val.replaceAll(',', '.'))),
               );
             },
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.allow(RegExp('[0-9.,]'))
+            ],
             controller: _controllerValor,
             validator: (val) =>
                 state.isValidValor ? null : 'Valor não pode ser zero',

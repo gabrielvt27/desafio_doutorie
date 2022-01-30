@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:client/src/constants.dart';
 import 'package:client/src/pages/product/bloc/form_status.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:dio/dio.dart';
 
 part 'product_event.dart';
@@ -21,6 +22,8 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     });
 
     on<ProductFormSubmitEvent>((event, emit) async {
+      final kApiUrl = kIsWeb ? kApiUrlWeb : kApiUrlMobile;
+
       emit(state.copyWith(formStatus: FormSubmitting()));
 
       try {

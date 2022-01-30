@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:client/src/constants.dart';
+import 'package:flutter/services.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -11,6 +12,7 @@ class CustomTextFormField extends StatelessWidget {
     this.onChanged,
     this.controller,
     this.validator,
+    this.inputFormatters,
   }) : super(key: key);
 
   final String label;
@@ -19,6 +21,7 @@ class CustomTextFormField extends StatelessWidget {
   final Function(String)? onChanged;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +39,7 @@ class CustomTextFormField extends StatelessWidget {
           height: kDefaultPadding / 4,
         ),
         TextFormField(
+          inputFormatters: inputFormatters,
           controller: controller,
           validator: validator,
           onChanged: onChanged,

@@ -26,9 +26,10 @@
       - Por padrão o servidor estará rodando na porta 3000
       
   3. Inicie o aplicativo:
-     - Abra a pasta **client** pelo terminal e execute o seguinte comando para baixar todas as depedências do projeto:
+     - Abra a pasta **client** pelo terminal e execute os seguintes comandos para criar as pastas web/android/ios e baixar todas as depedências do projeto:
      
      ```console
+      flutter create .
       flutter pub get
       ```
       
